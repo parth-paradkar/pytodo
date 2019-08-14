@@ -4,6 +4,7 @@ import argparse
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 import os
+from quotes import get_random_quote
 
 client = MongoClient()
 db = client['todo-app']
@@ -37,6 +38,7 @@ def display_todos():
     lengths = [len(todo['text']) for todo in todos ]
     max_len = max(lengths)
     print()
+    print(get_random_quote())
     for index, todo in enumerate(todos):
         status_text = 'Done' if todo['is_done'] else 'PENDING'
         spaces = (max_len - len(todo['text']) + 1) * ' '
