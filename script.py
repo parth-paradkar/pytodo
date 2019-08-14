@@ -57,7 +57,6 @@ def set_todo_status(todos, index, status):
 
 def delete_by_id(id):
     collection.find_one_and_delete({ '_id': id })
-    print('***')
 
 def expire_todos():
     for todo in collection.find():
