@@ -1,6 +1,8 @@
 import random
+import os
 
-f = open('quotes.txt', 'r')
+file_path = os.path.dirname(os.path.realpath(__file__)) + '/quotes.txt'
+f = open(file_path, 'r')
 lines = f.readlines()
 
 def get_random_quote():
