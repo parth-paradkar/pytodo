@@ -3,7 +3,6 @@
 import argparse
 from pymongo import MongoClient
 from datetime import datetime, timedelta
-import os
 from quotes import get_random_quote
 
 client = MongoClient()
