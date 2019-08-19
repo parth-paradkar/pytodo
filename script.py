@@ -51,10 +51,14 @@ def set_todo_status(todos, index, status):
     -----
     todos: List of todo objects retrieved from the db\n
     index: Index of the task to be marked as seen in the terminal\n
-    status: Boolean True=> Done, False=> Undone
+    status: Boolean True => Done, False => Undone
     """
-    todo = todos[index]
-    collection.find_one_and_update({'_id': todo['_id']}, {'$set': {'is_done': status}})
+    try:
+        todo = todos[index]
+        collection.find_one_and_update({'_id': todo['_id']}, {'$set': {'is_done': status}})
+    except IndexError as error:
+        print('SELECT THE CORRECT TODO INDEX!!\n')
+    
 
 def delete_by_id(id):
     collection.find_one_and_delete({ '_id': id })
