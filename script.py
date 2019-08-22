@@ -58,6 +58,17 @@ def set_todo_status(todos, index, status):
         collection.find_one_and_update({'_id': todo['_id']}, {'$set': {'is_done': status}})
     except IndexError as error:
         print('SELECT THE CORRECT TODO INDEX!!\n')
+
+def delete_by_index(todos, index):
+    """
+    Delete a todo by its index in the list of todos
+    """
+    try:
+        todo = todos[index]
+        delete_by_id(todo['_id'])
+    except IndexError as error:
+        print('SELECT THE CORRECT TODO INDEX!!\n')
+
     
 
 def delete_by_id(id):
@@ -74,11 +85,13 @@ def main():
     parser.add_argument('--new', dest='new')
     parser.add_argument('--done', action='append')
     parser.add_argument('--undone', action='append')
+    parser.add_argument('--remove', action='append')
     args = parser.parse_args() # Object with attribute names as the option names
 
     # --new => create an new todo
     # --done => mark an existing todo as done
     # --undone => unmark an existing todo as done
+    # --remove => remove a todo from db
     todos = get_all_todos()
     args = vars(args)
     if(all(args[key] == None for key in args.keys())):
@@ -90,6 +103,8 @@ def main():
             set_todo_status(todos, int(args['done'][0]), True)
         if(args['undone'] != None):
             set_todo_status(todos, int(args['undone'][0]), False)
+        if(args['remove'] != None):
+            delete_by_index(todos, int(args['remove'][0]))
         display_todos()
         
 if __name__ == '__main__':
