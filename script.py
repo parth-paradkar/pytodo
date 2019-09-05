@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-import argparse
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 from quotes import get_random_quote
 from priority import  date_sort
+from argparser import create_parser
 
 client = MongoClient()
 db = client['todo-app']
@@ -92,12 +92,9 @@ def expire_todos():
 
 def main():
     expire_todos()
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--new', dest='new', help='create an new todo')
-    parser.add_argument('--done', action='append', help='mark an existing todo as done')
-    parser.add_argument('--undone', action='append', help='unmark an existing todo as done')
-    parser.add_argument('--remove', action='append', help='remove a todo from db')
-    parser.add_argument('--due', action='append', help='due date of the todo in the format dd-mm-yyyy')
+    
+    parser = create_parser()
+    
     args = parser.parse_args() # Object with attribute names as the option names
 
     todos = get_all_todos()
