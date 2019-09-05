@@ -4,12 +4,21 @@ import argparse
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 from quotes import get_random_quote
+from priority import  date_sort
 
 client = MongoClient()
 db = client['todo-app']
 collection = db.todos
 
-def add_todo(todo_text):
+def parse_date(date):
+    if(date is not None):
+        day, month, year = date.split('-')
+        day, month, year = int(day), int(month), int(year)
+        return datetime(year, month, day)
+    else:
+        return None
+
+def add_todo(todo_text, due_date):
     """ Adds an new todo to the DB 
         -----
         todo_text: Text of the todos to be added
@@ -17,14 +26,15 @@ def add_todo(todo_text):
     todo = {
         'text': todo_text,
         'is_done': False,
-        'created': datetime.now()
+        'created': datetime.now(),
+        'due': parse_date(due_date)
     }
     return collection.insert_one(todo).inserted_id
 
 
 def get_all_todos():
     """ Returns a list of all todo objects in the DB """
-    return list(collection.find())
+    return date_sort(list(collection.find()))
 
 def display_todos():
     """ 
@@ -40,8 +50,9 @@ def display_todos():
     print(get_random_quote())
     for index, todo in enumerate(todos):
         status_text = 'Done' if todo['is_done'] else 'PENDING'
+        due_text = '\tDue ' + todo['due'].strftime("%d %b %y") if todo['due'] != None else ''
         spaces = (max_len - len(todo['text']) + 1) * ' '
-        display_text = f"{index} - {todo['text']}" + spaces + '-' + status_text
+        display_text = f"{index} - {todo['text']}" + spaces + '-' + status_text + due_text
         print(display_text)
     print()
 
@@ -86,19 +97,26 @@ def main():
     parser.add_argument('--done', action='append')
     parser.add_argument('--undone', action='append')
     parser.add_argument('--remove', action='append')
+    parser.add_argument('--due', action='append')
     args = parser.parse_args() # Object with attribute names as the option names
 
     # --new => create an new todo
+    # --due => due date of the todo in the format dd-mm-yyyy
     # --done => mark an existing todo as done
     # --undone => unmark an existing todo as done
     # --remove => remove a todo from db
+
     todos = get_all_todos()
+    
     args = vars(args)
     if(all(args[key] == None for key in args.keys())):
         display_todos()
     else:
         if(args['new'] != None):
-            add_todo(args['new'])
+            if(args['due'] is not None):
+                add_todo(args['new'], args['due'][0])
+            else:
+                add_todo(args['new'], None)               
         if(args['done'] != None):
             set_todo_status(todos, int(args['done'][0]), True)
         if(args['undone'] != None):
