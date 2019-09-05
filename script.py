@@ -93,18 +93,12 @@ def expire_todos():
 def main():
     expire_todos()
     parser = argparse.ArgumentParser()
-    parser.add_argument('--new', dest='new')
-    parser.add_argument('--done', action='append')
-    parser.add_argument('--undone', action='append')
-    parser.add_argument('--remove', action='append')
-    parser.add_argument('--due', action='append')
+    parser.add_argument('--new', dest='new', help='create an new todo')
+    parser.add_argument('--done', action='append', help='mark an existing todo as done')
+    parser.add_argument('--undone', action='append', help='unmark an existing todo as done')
+    parser.add_argument('--remove', action='append', help='remove a todo from db')
+    parser.add_argument('--due', action='append', help='due date of the todo in the format dd-mm-yyyy')
     args = parser.parse_args() # Object with attribute names as the option names
-
-    # --new => create an new todo
-    # --due => due date of the todo in the format dd-mm-yyyy
-    # --done => mark an existing todo as done
-    # --undone => unmark an existing todo as done
-    # --remove => remove a todo from db
 
     todos = get_all_todos()
     
