@@ -1,6 +1,9 @@
 from argparse import ArgumentParser
 
 def create_parser():
+    """
+    Returns an ArgumentParser object with the required keys.
+    """
     parser = ArgumentParser()
     parser.add_argument('--new', dest='new', help='create an new todo')
     parser.add_argument('--done', action='append', help='mark an existing todo as done')

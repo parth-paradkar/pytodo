@@ -11,6 +11,9 @@ db = client['todo-app']
 collection = db.todos
 
 def parse_date(date):
+    """
+    Returns a datetime object from a string input.
+    """
     if(date is not None):
         day, month, year = date.split('-')
         day, month, year = int(day), int(month), int(year)
@@ -19,7 +22,7 @@ def parse_date(date):
         return None
 
 def add_todo(todo_text, due_date):
-    """ Adds an new todo to the DB 
+    """ Adds an new todo to the DB.
         -----
         todo_text: Text of the todos to be added
     """
@@ -33,12 +36,12 @@ def add_todo(todo_text, due_date):
 
 
 def get_all_todos():
-    """ Returns a list of all todo objects in the DB """
+    """ Returns a list of all todo objects in the DB. """
     return date_sort(list(collection.find()))
 
 def display_todos():
     """ 
-    Displays the existing todos
+    Displays the existing todos.
     """
     todos = get_all_todos()
     if(len(todos) == 0):
@@ -58,7 +61,7 @@ def display_todos():
 
 def set_todo_status(todos, index, status):
     """
-    Set the status of a todo
+    Set the status of a todo.
     -----
     todos: List of todo objects retrieved from the db\n
     index: Index of the task to be marked as seen in the terminal\n
@@ -83,9 +86,16 @@ def delete_by_index(todos, index):
     
 
 def delete_by_id(id):
+    """
+    Finds and deletes a todo from the database by id.
+    """
     collection.find_one_and_delete({ '_id': id })
 
 def expire_todos():
+    """
+    Removes a todo from the database once it is marked as done.\n
+    Currently removes a todo is it is marked as done and one hour has passed since its time of creation.
+    """
     for todo in collection.find():
         if(datetime.now() - todo['created'] > timedelta(hours=1) and todo['is_done']):
             delete_by_id(todo['_id'])
@@ -95,7 +105,7 @@ def main():
     
     parser = create_parser()
     
-    args = parser.parse_args() # Object with attribute names as the option names
+    args = parser.parse_args() # Dictionary with key names as options
 
     todos = get_all_todos()
     
