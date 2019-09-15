@@ -53,7 +53,7 @@ def display_todos():
     print(get_random_quote())
     for index, todo in enumerate(todos):
         status_text = 'Done' if todo['is_done'] else 'PENDING'
-        due_text = '\tDue ' + todo['due'].strftime("%d %b %y") if todo['due'] != None else ''
+        due_text = '\tDue ' + todo['due'].strftime("%d %b %y") if todo['due'] != None and not todo['is_done'] else ''
         spaces = (max_len - len(todo['text']) + 1) * ' '
         display_text = f"{index} - {todo['text']}" + spaces + '-' + status_text + due_text
         print(display_text)
