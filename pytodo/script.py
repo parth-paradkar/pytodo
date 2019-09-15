@@ -91,6 +91,15 @@ def delete_by_id(id):
     """
     collection.find_one_and_delete({ '_id': id })
 
+def update_by_index(todos, index):
+    try:
+        todo = todos[index]
+        new_text = input("Enter new text: ")
+        collection.find_one_and_update({'_id': todo['_id']}, {"$set": {'text': new_text}})
+    except IndexError:
+        print('SELECT THE CORRECT TODO INDEX!!\n')
+
+
 def expire_todos():
     """
     Removes a todo from the database once it is marked as done.\n
@@ -124,6 +133,8 @@ def main():
             set_todo_status(todos, int(args['undone'][0]), False)
         if(args['remove'] != None):
             delete_by_index(todos, int(args['remove'][0]))
+        if(args['edit'] != None):
+            update_by_index(todos, int(args['edit'][0]))
         display_todos()
         
 if __name__ == '__main__':
