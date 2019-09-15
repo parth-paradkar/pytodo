@@ -10,4 +10,5 @@ def create_parser():
     parser.add_argument('--undone', action='append', help='unmark an existing todo as done')
     parser.add_argument('--remove', action='append', help='remove a todo from db')
     parser.add_argument('--due', action='append', help='due date of the todo in the format dd-mm-yyyy')
+    parser.add_argument('--edit', action='append' help='edit an existing todo')
     return parser
