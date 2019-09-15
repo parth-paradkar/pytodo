@@ -92,6 +92,9 @@ def delete_by_id(id):
     collection.find_one_and_delete({ '_id': id })
 
 def update_by_index(todos, index):
+    """
+    Updates the text of a todo
+    """
     try:
         todo = todos[index]
         new_text = input("Enter new text: ")
