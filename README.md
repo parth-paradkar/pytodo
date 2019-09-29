@@ -8,13 +8,6 @@ Living in the command line is a blissful experience. Keeping your thing together
 
 ## Installation
 
-### Install MongoDB
-Download the required MongoDB package the package repository.
-For Ubuntu, run the following commands
-```
-sudo apt update
-sudo apt install -y mongodb
-```
 ### Installing Python libraries
 This project uses pipenv to manage dependencies, so make sure you have pipenv installed.
 ```
@@ -39,4 +32,20 @@ Add the following line in .bashrc file after replacing ```CLONED_REPO_PATH``` wi
 
 ```
 alias pytodo='python3 <CLONED_REPO_PATH>/pytodo/script
+```
+
+### Installing MongoDB
+Download the required MongoDB package the package repository.
+For Ubuntu, run the following commands
+```
+sudo apt update
+sudo apt install -y mongodb
+```
+
+### Creating a local database
+Start the mongo shell and create a new database with a collection to store the todos
+```
+mongo
+use todo-app
+db.createCollection('todos')
 ```
