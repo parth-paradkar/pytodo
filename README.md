@@ -20,3 +20,23 @@ This project uses pipenv to manage dependencies, so make sure you have pipenv in
 ```
 pip install pipenv
 ```
+Clone this repository
+```
+git clone https://github.com/thescriptninja/pytodo.git
+```
+Use pipenv to install the dependencies
+```
+pipenv install
+```
+Create an executable file from the ```script.py``` file
+
+```
+cd pytodo/
+cp script.py script
+sudo chmod +x script
+```
+Add the following line in .bashrc file after replacing ```CLONED_REPO_PATH``` with the absolute path to the cloned repo
+
+```
+alias pytodo='python3 <CLONED_REPO_PATH>/pytodo/script
+```
