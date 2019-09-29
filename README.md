@@ -4,7 +4,7 @@ A minimal command line todo list built with Python and MongoDB
 
 ![Mongo + Python](/img/mongo_python_love.png)
 
-Living in the command line is a blissful experience. Keeping your thing together sometimes isn't. Track your tasks and deadlines with this command line app built with Python and MongoDB
+Living in the command line is blissful. Keeping your things together sometimes isn't. Track your tasks and deadlines with this command line app built with Python and MongoDB
 
 ## Installation
 
