@@ -35,7 +35,7 @@ cd pytodo/
 cp script.py script
 sudo chmod +x script
 ```
-Add the following line in .bashrc file after replacing ```CLONED_REPO_PATH``` with the absolute path to the cloned repo
+Add the following line in .bashrc file after replacing ```CLONED_REPO_PATH``` with the absolute path to the cloned repository.
 
 ```
 alias pytodo='python3 <CLONED_REPO_PATH>/pytodo/script
