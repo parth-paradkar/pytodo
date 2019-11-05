@@ -1,4 +1,5 @@
 # pytodo
+[![Gitter](https://badges.gitter.im/pytodo/community.svg)](https://gitter.im/pytodo/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A minimal command line todo list built with Python and MongoDB
 
@@ -49,3 +50,6 @@ mongo
 use todo-app
 db.createCollection('todos')
 ```
+
+## Community Channel
+Join us on [Gitter](https://gitter.im/pytodo/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
