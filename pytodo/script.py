@@ -103,6 +103,12 @@ def delete_by_id(id):
     """
     collection.find_one_and_delete({"_id": id})
 
+def clear():
+    """
+    Clears all todos from the database.
+    """
+    collection.delete_many({})
+
 
 def update_by_index(todos, index):
     """
@@ -154,6 +160,8 @@ def main():
             delete_by_index(todos, int(args["remove"][0]))
         if args["edit"] != None:
             update_by_index(todos, int(args["edit"][0]))
+        if args["clear"] != None:
+            clear()
         display_todos()
 
 

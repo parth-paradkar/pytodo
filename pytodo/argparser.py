@@ -16,4 +16,5 @@ def create_parser():
         "--due", action="append", help="due date of the todo in the format dd-mm-yyyy"
     )
     parser.add_argument("--edit", action="append", help="edit an existing todo")
+    parser.add_argument("--clear", action="append", help="delete all todos")
     return parser
