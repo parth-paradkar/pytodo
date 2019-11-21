@@ -52,4 +52,4 @@ db.createCollection('todos')
 ```
 
 ## Community Channel
-Join us on [Gitter](https://gitter.im/pytodo/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+Join the converstaion on [Gitter](https://gitter.im/pytodo/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
