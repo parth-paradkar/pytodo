@@ -37,11 +37,30 @@ alias pytodo='python3 <CLONED_REPO_PATH>/pytodo/script
 
 ### Installing MongoDB
 Download the required MongoDB package the package repository.
-For Ubuntu, run the following commands
+#### For Ubuntu, run the following commands
 ```
 sudo apt update
 sudo apt install -y mongodb
 ```
+
+#### For Fedora users, run the following commands
+*Configure the dnf repository*
+```
+sudo vi /etc/yum.repos.d/mongodb.repo
+```
+*Install Mongodb*
+```
+sudo dnf update
+sudo dnf install mongodb-org 
+```
+*Start the Mongodb service*
+```
+sudo systemctl enable mongod.service
+sudo systemctl start mongod.service
+```
+
+#### For Arch users, run the following commands
+Aur package at [mongodb 4.2.1-1](https://aur.archlinux.org/packages/mongodb/)
 
 ### Creating a local database
 Start the mongo shell and create a new database with a collection to store the todos
