@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from argparser import create_parser
-from modules import parse_date, add_todo, get_all_todos, display_todos, set_todo_status, delete_by_index, delete_by_id, clear, update_by_index, expire_todos
+from modules import add_todo, get_all_todos, display_todos, set_todo_status, delete_by_index, clear, update_by_index, expire_todos
 
 
 def main():
