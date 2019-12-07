@@ -132,11 +132,11 @@ def expire_todos():
             delete_by_id(todo["_id"])
 
 
-def expire_overdue_todos():
+def expire_overdue_todos(todos):
     """
     This method when called will automatically remove all overdue todos \n
     from the todo list irrespective of the status i.e done/undone
     """
-    for todo in collection.find():
+    for todo in todos:
         if datetime.now() > todo["due"]:
             delete_by_id(todo["_id"])

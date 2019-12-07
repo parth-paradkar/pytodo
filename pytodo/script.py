@@ -32,6 +32,8 @@ def main():
             update_by_index(todos, int(args["edit"][0]))
         if args["clear"] != None:
             clear()
+        if args["expire"] != None:
+            expire_overdue_todos(todos)
         display_todos()
 
 
