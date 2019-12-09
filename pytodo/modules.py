@@ -134,8 +134,7 @@ def expire_todos():
 
 def expire_overdue_todos(todos):
     """
-    This method when called will automatically remove all overdue todos \n
-    from the todo list irrespective of the status i.e done/undone
+    Removes all overdue todos irrespective of their status
     """
     for todo in todos:
         if datetime.now() > todo["due"]:
