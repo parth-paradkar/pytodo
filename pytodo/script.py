@@ -32,6 +32,8 @@ def main():
             update_by_index(todos, int(args["edit"][0]))
         if args["clear"] != None:
             clear()
+        if args["disable_quotes"] != None:
+            disable_quotes(int(args["disable_quotes"][0]))
         display_todos()
 
 

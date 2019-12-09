@@ -9,5 +9,6 @@ verify_ssl = true
 pymongo = "*"
 dotenv = "*"
 
+
 [requires]
 python_version = "3.7"

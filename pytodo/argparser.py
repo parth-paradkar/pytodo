@@ -17,4 +17,5 @@ def create_parser():
     )
     parser.add_argument("--edit", action="append", help="edit an existing todo")
     parser.add_argument("--clear", action="append", help="delete all todos")
+    parser.add_argument("--disable_quotes", action="append", help="Disable/Enable quotes from displaying")
     return parser
