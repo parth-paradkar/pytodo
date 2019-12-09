@@ -110,7 +110,7 @@ def clear():
 
 def update_by_index(todos, index):
     """
-    Updates the text of a todo
+    Updates the text and due date of a todo 
     """
     try:
         todo = todos[index]
