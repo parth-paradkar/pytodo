@@ -51,7 +51,8 @@ def display_todos():
     lengths = [len(todo["text"]) for todo in todos]
     max_len = max(lengths)
     print()
-    print(get_random_quote())
+    if not todos[0]["quotes_disabled"] :
+        print(get_random_quote())
     for index, todo in enumerate(todos):
         status_text = "Done" if todo["is_done"] else "PENDING"
         due_text = (
@@ -139,3 +140,15 @@ def expire_overdue_todos(todos):
     for todo in todos:
         if datetime.now() > todo["due"]:
             delete_by_id(todo["_id"])
+
+
+def disable_quotes(flag):
+    """
+    Enables/Disables the display of random quotes
+    """
+    if flag != 0 and flag != 1:
+        print("USE 0 FOR ENABLING QUOTES\nUSE 1 FOR DISABLING QUOTES")
+        return
+    collection.update(
+        {},{"$set": {"quotes_disabled": bool(flag)}}
+    )	
