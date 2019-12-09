@@ -34,6 +34,8 @@ def main():
             clear()
         if args["expire"] != None:
             expire_overdue_todos(todos)
+        if args["disable_quotes"] != None:
+            disable_quotes(int(args["disable_quotes"][0]))
         display_todos()
 
 
