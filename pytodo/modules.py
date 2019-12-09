@@ -31,6 +31,7 @@ def add_todo(todo_text, due_date):
         "is_done": False,
         "created": datetime.now(),
         "due": parse_date(due_date),
+        "quotes_disabled": False,
     }
     return collection.insert_one(todo).inserted_id
 
