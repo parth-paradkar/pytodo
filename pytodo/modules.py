@@ -130,3 +130,12 @@ def expire_todos():
     for todo in collection.find():
         if datetime.now() - todo["created"] > timedelta(hours=1) and todo["is_done"]:
             delete_by_id(todo["_id"])
+
+
+def expire_overdue_todos(todos):
+    """
+    Removes all overdue todos irrespective of their status
+    """
+    for todo in todos:
+        if datetime.now() > todo["due"]:
+            delete_by_id(todo["_id"])

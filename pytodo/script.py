@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from argparser import create_parser
-from modules import add_todo, get_all_todos, display_todos, set_todo_status, delete_by_index, clear, update_by_index, expire_todos
+from modules import add_todo, get_all_todos, display_todos, set_todo_status, delete_by_index, clear, update_by_index, expire_todos, expire_overdue_todos
 
 
 def main():
@@ -32,6 +32,8 @@ def main():
             update_by_index(todos, int(args["edit"][0]))
         if args["clear"] != None:
             clear()
+        if args["expire"] != None:
+            expire_overdue_todos(todos)
         display_todos()
 
 
