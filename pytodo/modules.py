@@ -110,14 +110,32 @@ def clear():
 
 def update_by_index(todos, index):
     """
-    Updates the text of a todo
+    Updates the text and due date of a todo
     """
     try:
         todo = todos[index]
-        new_text = input("Enter new text: ")
-        collection.find_one_and_update(
-            {"_id": todo["_id"]}, {"$set": {"text": new_text}}
-        )
+        print("Do you want to update the title? [y/n]: ", end="")
+        ans1 = input().lower()
+        if ans1 == 'y':
+            new_text = input("Enter new text: ")
+            collection.find_one_and_update(
+                {"_id": todo["_id"]}, {"$set": {"text": new_text}}
+            )
+        elif ans1 == 'n':
+            pass
+        else:
+            print("NO PROPER INPUT GIVEN")
+        print("Do you want to update the due date? [y/n]: ", end="")
+        ans2 = input().lower()
+        if ans2 == 'y':
+            new_date = input("Enter new due date in the format dd-mm-yyyy: ")
+            collection.find_one_and_update(
+                {"_id": todo["_id"]}, {"$set": {"due": parse_date(new_date)}}
+            )
+        elif ans1 == 'n':
+            pass
+        else:
+            print("NO PROPER INPUT GIVEN")
     except IndexError:
         print("SELECT THE CORRECT TODO INDEX!!\n")
 
