@@ -114,7 +114,7 @@ def update_by_index(todos, index):
     """
     try:
         todo = todos[index]
-        print("Do you want to update the title?: [y/n]", end=" ")
+        print("Do you want to update the title? [y/n]: ", end="")
         ans1 = input().lower()
         if ans1 == 'y':
             new_text = input("Enter new text: ")
@@ -125,7 +125,7 @@ def update_by_index(todos, index):
             pass
         else:
             print("NO PROPER INPUT GIVEN")
-        print("Do you want to update the due date?: [y/n]", end=" ")
+        print("Do you want to update the due date? [y/n]: ", end="")
         ans2 = input().lower()
         if ans2 == 'y':
             new_date = input("Enter new due date in the format dd-mm-yyyy: ")
