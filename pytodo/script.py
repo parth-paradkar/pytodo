@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from argparser import create_parser
-from modules import add_todo, get_all_todos, display_todos, set_todo_status, delete_by_index, clear, update_by_index, expire_todos, expire_overdue_todos
+from modules import add_todo, get_all_todos, display_todos, set_todo_status, delete_by_index, clear, update_by_index, expire_todos, expire_overdue_todos,disable_quotes
 
 
 def main():
@@ -34,6 +34,8 @@ def main():
             clear()
         if args["expire"] != None:
             expire_overdue_todos(todos)
+        if args["disable_quotes"] != None:
+            disable_quotes(int(args["disable_quotes"][0]))
         display_todos()
 
 
