@@ -7,6 +7,7 @@ from quotes import get_random_quote
 client = MongoClient()
 db = client["todo-app"]
 collection = db.todos
+config = db.config
 
 
 def parse_date(date):
@@ -52,7 +53,8 @@ def display_todos():
     lengths = [len(todo["text"]) for todo in todos]
     max_len = max(lengths)
     print()
-    if not todos[0]["quotes_disabled"] :
+    [quote] = config.find()
+    if(quote["quote"]):
         print(get_random_quote())
     for index, todo in enumerate(todos):
         status_text = "Done" if todo["is_done"] else "PENDING"
@@ -161,13 +163,13 @@ def expire_overdue_todos(todos):
             delete_by_id(todo["_id"])
 
 
-def disable_quotes(flag):
+def quotes(flag):
     """
     Enables/Disables the display of random quotes
     """
     if flag != 0 and flag != 1:
-        print("USE 0 FOR ENABLING QUOTES\nUSE 1 FOR DISABLING QUOTES")
+        print("USE 1 FOR ENABLING QUOTES\nUSE 0 FOR DISABLING QUOTES")
         return
-    collection.update(
-        {},{"$set": {"quotes_disabled": bool(flag)}}
-    )	
+    config.update(
+        {},{"$set": {"quote": bool(flag)}}
+    )
