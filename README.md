@@ -63,11 +63,13 @@ sudo systemctl start mongod.service
 Aur package at [mongodb 4.2.1-1](https://aur.archlinux.org/packages/mongodb/)
 
 ### Creating a local database
-Start the mongo shell and create a new database with a collection to store the todos
+Start the mongo shell and create a new database with two collections to store the todos and Configurations
 ```
 mongo
 use todo-app
 db.createCollection('todos')
+db.createCollection("config")
+db.config.insert({"quote":true})
 ```
 
 ## Community Channel
