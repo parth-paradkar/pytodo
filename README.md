@@ -23,7 +23,7 @@ Use pipenv to install the dependencies
 ```
 pipenv install
 ```
-This project requires pymongo as well
+Install dependencies using pip instead
 ```
 sudo pip install -r requirements.txt
 ```
