@@ -14,6 +14,7 @@ This project uses pipenv to manage dependencies, so make sure you have pipenv in
 ```
 pip install pipenv
 ```
+
 Clone this repository
 ```
 git clone https://github.com/thescriptninja/pytodo.git
@@ -22,15 +23,18 @@ Use pipenv to install the dependencies
 ```
 pipenv install
 ```
+Install dependencies using pip instead
+```
+sudo pip install -r requirements.txt
+```
 Create an executable file from the ```script.py``` file
 
 ```
-cd pytodo/
+cd pytodo/pytodo
 cp script.py script
 sudo chmod +x script
 ```
 Add the following line in .bashrc file after replacing ```CLONED_REPO_PATH``` with the absolute path to the cloned repository.
-
 ```
 alias pytodo='python3 <CLONED_REPO_PATH>/pytodo/script
 ```
@@ -68,6 +72,12 @@ Start the mongo shell and create a new database with a collection to store the t
 mongo
 use todo-app
 db.createCollection('todos')
+```
+
+## Using the TODO application
+To view the list of commands to use the todo application type
+```
+pytodo -h
 ```
 
 ## Community Channel
