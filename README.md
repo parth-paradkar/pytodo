@@ -14,10 +14,7 @@ This project uses pipenv to manage dependencies, so make sure you have pipenv in
 ```
 pip install pipenv
 ```
-This project requires pymongo as well
-```
-sudo pip install pymongo
-```
+
 Clone this repository
 ```
 git clone https://github.com/thescriptninja/pytodo.git
@@ -26,6 +23,10 @@ Use pipenv to install the dependencies
 ```
 pipenv install
 ```
+This project requires pymongo as well
+```
+sudo pip install -r requirements.txt
+```
 Create an executable file from the ```script.py``` file
 
 ```
@@ -33,13 +34,7 @@ cd pytodo/pytodo
 cp script.py script
 sudo chmod +x script
 ```
-We are going to create an alias to your path so that instead of changing your directory everytime you want to use the todo functions , you can just use the command pytodo
-
-From your home directory , open the .bashrc file in terminal using
-```
-nano .bashrc
-```
-add the following command at the end of your bash file
+Add the following line in .bashrc file after replacing ```CLONED_REPO_PATH``` with the absolute path to the cloned repository.
 ```
 alias pytodo='python3 <CLONED_REPO_PATH>/pytodo/script
 ```
@@ -84,11 +79,6 @@ To view the list of commands to use the todo application type
 ```
 pytodo -h
 ```
-
-There you will find different commands to use the application
-
-screenshots:
-![image](https://user-images.githubusercontent.com/56514792/70776840-405e8600-1da4-11ea-897d-499a4d0c1c70.png)
 
 ## Community Channel
 Join the converstaion on [Gitter](https://gitter.im/pytodo/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
