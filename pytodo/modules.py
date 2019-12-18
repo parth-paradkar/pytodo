@@ -26,13 +26,16 @@ def add_todo(todo_text, due_date):
         -----
         todo_text: Text of the todos to be added
     """
-    todo = {
-        "text": todo_text,
-        "is_done": False,
-        "created": datetime.now(),
-        "due": parse_date(due_date),
-    }
-    return collection.insert_one(todo).inserted_id
+    todo=[]
+    todo_list=todo_text.split(',')
+    for each_todo_text in todo_list:
+	    todo.append( {
+		"text": each_todo_text,
+		"is_done": False,
+		"created": datetime.now(),
+		"due": parse_date(due_date),
+	    })
+    return collection.insert_many(todo)
 
 
 def get_all_todos():
